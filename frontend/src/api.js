@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = 'http://localhost:5000/api/v1';
 
 export const generateContent = async (prompt) => {
     const response = await axios.post(`${API_URL}/generate`, { prompt });

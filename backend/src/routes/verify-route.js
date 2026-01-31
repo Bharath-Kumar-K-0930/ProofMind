@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { createHash } = require('../services/hash.service');
+const { createHash } = require('../services/hash-service');
 const canonicalize = require('../utils/canonicalize');
-const { checkProof } = require('../services/proof.service');
+const { checkProof } = require('../services/proof-service');
 
 router.post('/', async (req, res) => {
     const { metadata, hash } = req.body;

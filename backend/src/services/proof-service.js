@@ -1,5 +1,5 @@
-const { createHash } = require('./hash.service');
-const { storeProof, verifyProof } = require('./ogcc.service');
+const { createHash } = require('./hash-service');
+const { storeProof, verifyProof } = require('./ogcc-service');
 
 /**
  * Orchestrates the creation of a proof on 0G CC.

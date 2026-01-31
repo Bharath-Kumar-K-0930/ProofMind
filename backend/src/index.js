@@ -21,18 +21,18 @@ app.use(limiter);
 const PORT = process.env.PORT || 5000;
 
 // Routes
-const generateRoute = require('./routes/generate.route');
-const verifyRoute = require('./routes/verify.route');
-const proofRoute = require('./routes/proof.route');
+const generateRoute = require('./routes/generate-route');
+const verifyRoute = require('./routes/verify-route');
+const proofRoute = require('./routes/proof-route');
 
-app.use('/api/generate', generateRoute);
-app.use('/api/verify', verifyRoute);
-app.use('/api/proof', proofRoute);
+app.use('/api/v1/generate', generateRoute);
+app.use('/api/v1/verify', verifyRoute);
+app.use('/api/v1/proof', proofRoute);
 
 app.get('/', (req, res) => {
     res.send('ProofMind Backend API is operational');
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    // Server started
 });

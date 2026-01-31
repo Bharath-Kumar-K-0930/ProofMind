@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { generateAIResponse } = require('../services/ai.service');
+const { generateAIResponse } = require('../services/ai-service');
 const canonicalize = require('../utils/canonicalize');
-const { createProof } = require('../services/proof.service');
+const { createProof } = require('../services/proof-service');
 
 router.post('/', async (req, res) => {
     const { prompt, model = 'gpt-3.5-turbo' } = req.body;
