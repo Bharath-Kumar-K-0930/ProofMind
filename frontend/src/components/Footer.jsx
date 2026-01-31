@@ -49,8 +49,22 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="text-white/40 text-xs mt-8">
-                &copy; {new Date().getFullYear()} ProofMind AI. All rights served on the 0G Network.
+            <div className="flex flex-col items-center gap-4 mt-8">
+                <div className="flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-primary/50 transition-colors group">
+                    <span className="text-white/60 text-xs font-bold uppercase tracking-widest">Built For</span>
+                    <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center font-black text-black text-xs shadow-[0_0_10px_rgba(116,240,237,0.5)]">0G</div>
+                        <span className="text-white font-black tracking-tighter text-sm group-hover:text-primary transition-colors">0G Network</span>
+                    </div>
+                </div>
+
+                <div className="text-white/80 font-medium tracking-wide flex items-center gap-2 text-sm">
+                    Made With <span className="text-red-500 animate-pulse">❤️</span> By <span className="text-primary font-bold">Bharath Kumar K</span>
+                </div>
+
+                <div className="text-white/40 text-[10px] uppercase tracking-[0.2em]">
+                    &copy; {new Date().getFullYear()} ProofMind AI • All rights served on the 0G Network
+                </div>
             </div>
 
             {/* Render Modal */}
