@@ -47,18 +47,18 @@ const GeneratePage = () => {
                     </div>
 
                     <h3 className="text-xl mb-4 font-black uppercase tracking-tight">Cryptographic Proof (Anchored to 0G)</h3>
-                    <div className="proof-details">
-                        <div className="mb-4">
-                            <strong>Hash</strong>
-                            <span className="break-all">{result.hash}</span>
+                    <div className="proof-details bg-white/5 p-6 rounded-xl border border-white/10">
+                        <div className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-4 mb-4 items-center border-b border-white/5 pb-4 last:border-0 last:pb-0 last:mb-0">
+                            <strong className="text-secondary uppercase tracking-wider text-sm">Hash</strong>
+                            <span className="break-all font-mono text-xs md:text-sm bg-black/30 p-2 rounded text-primary">{result.hash}</span>
                         </div>
-                        <div className="mb-4">
-                            <strong>Model</strong>
-                            {result.metadata.model}
+                        <div className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-4 mb-4 items-center border-b border-white/5 pb-4 last:border-0 last:pb-0 last:mb-0">
+                            <strong className="text-secondary uppercase tracking-wider text-sm">Model</strong>
+                            <span className="text-white/90">{result.metadata.model}</span>
                         </div>
-                        <div>
-                            <strong>Timestamp</strong>
-                            {new Date(result.metadata.timestamp).toLocaleString()}
+                        <div className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-4 items-center">
+                            <strong className="text-secondary uppercase tracking-wider text-sm">Timestamp</strong>
+                            <span className="text-white/90">{new Date(result.metadata.timestamp).toLocaleString()}</span>
                         </div>
                     </div>
 

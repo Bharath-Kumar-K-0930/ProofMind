@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #74f0ed;
+    --color-secondary: #ea445a;
+    --color-bg: #000000;
+    --color-panel: #111111;
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+}
 
 @layer base {
     body {
@@ -16,7 +23,17 @@
 
 @layer components {
     .btn-primary {
-        @apply bg-secondary text-white px-12 py-5 rounded-[40px] font-black uppercase text-base tracking-wider transition-all duration-300 shadow-[0_10px_20px_rgba(234, 68, 90, 0.3)] hover:translate-y-[-3px] hover:scale-105 hover:shadow-[0_15px_30px_rgba(234, 68, 90, 0.5)] hover:bg-[#ff4d61] active:translate-y-0 active:scale-95;
+        @apply bg-secondary text-white px-12 py-5 rounded-[40px] font-black uppercase text-base tracking-wider transition-all duration-300;
+        box-shadow: 0 10px 20px rgba(234, 68, 90, 0.3);
+    }
+
+    .btn-primary:hover {
+        @apply translate-y-[-3px] scale-105 bg-[#ff4d61];
+        box-shadow: 0 15px 30px rgba(234, 68, 90, 0.5);
+    }
+
+    .btn-primary:active {
+        @apply translate-y-0 scale-95;
     }
 
     .card {
@@ -24,7 +41,11 @@
     }
 
     .input-field {
-        @apply w-full p-5 bg-[#1a1a1a] border-2 border-transparent rounded-[16px] text-white text-lg font-semibold transition-all duration-300 focus:outline-none focus:border-primary focus:bg-[#222] focus:shadow-[0_0_30px_rgba(116, 240, 237, 0.1)];
+        @apply w-full p-5 bg-[#1a1a1a] border-2 border-transparent rounded-[16px] text-white text-lg font-semibold transition-all duration-300 focus:outline-none focus:border-primary focus:bg-[#222];
+    }
+
+    .input-field:focus {
+        box-shadow: 0 0 30px rgba(116, 240, 237, 0.1);
     }
 
     .badge {

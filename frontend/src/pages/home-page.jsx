@@ -59,4 +59,4 @@ const HomePage = ({ onStart }) => {
     );
 };
 
-export default homePage;
+export default HomePage;
