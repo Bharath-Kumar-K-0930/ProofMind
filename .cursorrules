@@ -1,0 +1,22 @@
+# Project Rules: ProofMind-AI
+
+## Code Style
+- Use ES6 modules (prefer `require` for Backend if consistency dictates, but `import/export` for Frontend).
+- File names: `kebab-case` for utils/configs, `camelCase` for services, `PascalCase` for React components.
+- API routes: `/api/v1/resource` style (prefixed with `/api`).
+
+## Security Conventions
+- Always validate input on Backend routes.
+- Use `dotenv` for all secrets. Never hardcode keys.
+- Implement rate limiting for AI generation routes.
+- Sanitize data before canonicalization.
+
+## 0G Network Integration
+- Reference: https://docs.0g.ai/ai-context
+- Use `@0gfoundation/0g-cc` for proof storage and verification.
+
+## Development Workflow
+- **Plan First**: Every phase must have a section in `plan.md`.
+- **Commit Often**: Commit after every phase completion.
+- **Log Everything**: Update `PROJECT_LOG.md` after every phase.
+- **Explain It**: Always provide a "Junior Dev" explanation after code generation.
