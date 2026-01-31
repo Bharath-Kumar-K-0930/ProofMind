@@ -38,11 +38,11 @@ function validateSafety(text) {
     const violations = [];
 
     const categories = {
-        "Illegal Acts": ['hotwire', 'steal', 'hack', 'illegal', 'contraband', 'smuggle'],
-        "Violence": ['kill', 'bomb', 'weapon', 'murder', 'attack', 'hurt', 'fight'],
-        "Self-Harm": ['suicide', 'self-harm', 'cut myself', 'overdose'],
-        "Hate Speech": ['hate', 'racist', 'supremacy', 'nazi', 'slur'],
-        "Sexual": ['explicit', 'porn', 'xxx', 'nsfw']
+        "Illegal Acts": ['hotwire', 'steal', 'hack', 'illegal', 'contraband', 'smuggle', 'theft', 'robbery', 'piracy', 'fraud'],
+        "Violence": ['kill', 'bomb', 'weapon', 'murder', 'attack', 'hurt', 'fight', 'assault', 'terror', 'explosive'],
+        "Self-Harm": ['suicide', 'self-harm', 'cut myself', 'overdose', 'end my life', 'depressed'],
+        "Hate Speech": ['hate', 'racist', 'supremacy', 'nazi', 'slur', 'bigot', 'discrimination'],
+        "Sexual": ['explicit', 'porn', 'xxx', 'nsfw', 'adult content', 'sexual']
     };
 
     for (const [category, keywords] of Object.entries(categories)) {
