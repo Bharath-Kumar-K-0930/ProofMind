@@ -22,7 +22,7 @@ const Generate = () => {
 
     return (
         <div className="card">
-            <h2>Generate Verifiable AI Output</h2>
+            <h2 style={{ marginBottom: '2rem' }}>Generate Verifiable <span style={{ color: 'var(--primary)' }}>Output</span></h2>
             <form onSubmit={handleGenerate}>
                 <div className="input-group">
                     <label>Enter Prompt</label>
