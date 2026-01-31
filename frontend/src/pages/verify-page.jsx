@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { verifyContent } from '../api';
 import Toast from '../components/Toast';
 

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { generateContent } from '../api';
 import Toast from '../components/Toast';
 
