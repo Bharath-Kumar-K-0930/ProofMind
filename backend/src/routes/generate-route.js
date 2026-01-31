@@ -30,6 +30,9 @@ router.post('/', async (req, res) => {
             metadata
         });
     } catch (error) {
+        if (error.message.includes("Safety Policy Violation")) {
+            return res.status(400).json({ error: error.message });
+        }
         res.status(500).json({ error: error.message });
     }
 });
