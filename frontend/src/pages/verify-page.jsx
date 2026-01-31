@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
 import { verifyContent } from '../api';
+import Toast from '../components/Toast';
 
 const VerifyPage = () => {
     const [proofJson, setProofJson] = useState('');
     const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState(null);
+    const [toast, setToast] = useState(null);
+
+    const showToast = (message, type = 'info') => {
+        setToast({ message, type });
+    };
 
     const handleVerify = async (e) => {
         e.preventDefault();
@@ -17,8 +22,14 @@ const VerifyPage = () => {
                 hash: data.hash
             });
             setStatus(result);
+            if (result.verified) {
+                showToast("Proof matched and verified on-chain!", "success");
+            } else {
+                showToast(result.reason, "error");
+            }
         } catch (error) {
             setStatus({ verified: false, reason: "Invalid JSON format or network error" });
+            showToast("Invalid JSON format!", "error");
         } finally {
             setLoading(false);
         }
@@ -53,6 +64,14 @@ const VerifyPage = () => {
                         {status.verified && <p className="mt-4 opacity-80">{status.message}</p>}
                     </div>
                 </div>
+            )}
+            {/* Render Toast */}
+            {toast && (
+                <Toast
+                    message={toast.message}
+                    type={toast.type}
+                    onClose={() => setToast(null)}
+                />
             )}
         </div>
     );

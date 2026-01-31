@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
 import { generateContent } from '../api';
+import Toast from '../components/Toast';
 
 const GeneratePage = () => {
     // Initialize state from localStorage if available
     const [prompt, setPrompt] = useState(() => localStorage.getItem('pm_prompt') || '');
     const [loading, setLoading] = useState(false);
+    const [toast, setToast] = useState(null);
     const [result, setResult] = useState(() => {
         const saved = localStorage.getItem('pm_result');
         return saved ? JSON.parse(saved) : null;
     });
+
+    const showToast = (message, type = 'info') => {
+        setToast({ message, type });
+    };
 
     // Save to localStorage whenever they change
     React.useEffect(() => {
@@ -32,8 +37,9 @@ const GeneratePage = () => {
         try {
             const data = await generateContent(prompt);
             setResult(data);
+            showToast("Content generated and proof anchored!", "success");
         } catch (error) {
-            alert("Error generating content: " + error.message);
+            showToast(error.message, 'error');
         } finally {
             setLoading(false);
         }
@@ -90,6 +96,14 @@ const GeneratePage = () => {
                         </button>
                     </div>
                 </div>
+            )}
+            {/* Render Toast */}
+            {toast && (
+                <Toast
+                    message={toast.message}
+                    type={toast.type}
+                    onClose={() => setToast(null)}
+                />
             )}
         </div>
     );
