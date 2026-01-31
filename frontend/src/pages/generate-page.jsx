@@ -2,14 +2,33 @@ import React, { useState } from 'react';
 import { generateContent } from '../api';
 
 const GeneratePage = () => {
-    const [prompt, setPrompt] = useState('');
+    // Initialize state from localStorage if available
+    const [prompt, setPrompt] = useState(() => localStorage.getItem('pm_prompt') || '');
     const [loading, setLoading] = useState(false);
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState(() => {
+        const saved = localStorage.getItem('pm_result');
+        return saved ? JSON.parse(saved) : null;
+    });
+
+    // Save to localStorage whenever they change
+    React.useEffect(() => {
+        localStorage.setItem('pm_prompt', prompt);
+    }, [prompt]);
+
+    React.useEffect(() => {
+        if (result) {
+            localStorage.setItem('pm_result', JSON.stringify(result));
+        }
+    }, [result]);
 
     const handleGenerate = async (e) => {
         e.preventDefault();
         if (!prompt) return;
         setLoading(true);
+        // Clear previous result from visual state immediately, but keep in storage until new one arrives if desired.
+        // Actually best to clear old result to show we are regenerating
+        setResult(null);
+
         try {
             const data = await generateContent(prompt);
             setResult(data);
@@ -65,7 +84,7 @@ const GeneratePage = () => {
                     <div className="mt-8">
                         <button className="btn-primary w-full" onClick={() => {
                             navigator.clipboard.writeText(JSON.stringify(result));
-                            alert("Proof metadata copied to clipboard!");
+                            showToast("Proof metadata copied to clipboard!", "success");
                         }}>
                             Copy Full Proof for Verification
                         </button>

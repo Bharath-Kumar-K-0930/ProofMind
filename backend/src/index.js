@@ -33,6 +33,10 @@ app.get('/', (req, res) => {
     res.send('ProofMind Backend API is operational');
 });
 
-app.listen(PORT, () => {
-    // Server started
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        // Server started locally
+    });
+}
+
+module.exports = app;

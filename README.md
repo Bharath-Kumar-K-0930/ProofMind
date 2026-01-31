@@ -1,87 +1,81 @@
 # ProofMind AI 🧠🔒
+> **Verifiable, Immutable, and Trustworthy AI Content.**
 
-**Verifiable AI Content Generation on the 0G Network**
+![ProofMind Banner](https://via.placeholder.com/1200x400/000000/74f0ed?text=ProofMind+AI)
 
-ProofMind AI represents the next evolution of Generative AI—where every output is cryptographically anchored and verifiable. Built for the **0G Hackathon**, this application explicitly proves that AI-generated content (text, code, or creative writing) was generated at a specific time and by a specific model, storing this proof immutably on the 0G decentralized storage network.
+## 🚨 The Problem: The "Black Box" of AI
+We are entering a world where AI can generate anything: news articles, legal drafts, research summaries, and even fake evidence. 
+The core problem isn't that AI writes content — it's that **no one can prove:**
+*   **Who** generated it?
+*   **When** was it generated?
+*   **Has it been altered** since generation?
 
-![ProofMind Logo](frontend/public/logo.png)
-
-## 🚀 Key Features
-
-*   **Verifiable AI**: Generate content using OpenAI's GPT models while simultaneously creating a unique cryptographic hash of the output.
-*   **Immutable Proof**: Automatically anchors the content hash and metadata (timestamp, model version) to the **0G Storage Network** (Testnet).
-*   **Instant Verification**: Anyone can verify the authenticity of the content by re-hashing it and checking the 0G blockchain record.
-*   **Cyberpunk UI**: A high-energy, futuristic interface built with **React** and **Tailwind CSS**.
-
-## 🛠 Tech Stack
-
-*   **Frontend**: React (Vite), Tailwind CSS v4, PostCSS
-*   **Backend**: Node.js, Express, Open Zeppelin (via @0gfoundation/0g-cc)
-*   **AI Engine**: OpenAI API (GPT-3.5/4)
-*   **Decentralized Storage**: 0G Network (ZeroGravity)
-
-## 📦 Installation & Setup
-
-1.  **Clone the Repository**
-    ```bash
-    git clone https://github.com/Bharath-Kumar-K-0930/ProofMind.git
-    cd ProofMind
-    ```
-
-2.  **Install Dependencies**
-    ```bash
-    # Install root dependencies (concurrently)
-    npm install
-
-    # Install Backend dependencies
-    cd backend && npm install
-
-    # Install Frontend dependencies
-    cd ../frontend && npm install
-    ```
-
-3.  **Environment Variables**
-    Create a `.env` file in the `backend` directory:
-    ```env
-    PORT=5000
-    OPENAI_API_KEY=your_openai_api_key
-    OG_CC_ENDPOINT=https://rpc-testnet.0g.ai
-    ```
-
-4.  **Run Application**
-    From the root directory:
-    ```bash
-    # Runs both Frontend (Vite) and Backend (Nodemon)
-    npm run dev
-    ```
-    - Frontend: `http://localhost:5173`
-    - Backend: `http://localhost:5000`
-
-## 🧪 Testing
-
-We use **Jest** and **Supertest** for ensuring API reliability.
-
-```bash
-cd backend
-npm test
-```
-
-## 📜 API Documentation (v1)
-
-### `POST /api/v1/generate`
-Generates AI content and creates a local proof.
-- **Body**: `{ "prompt": "Explain zero knowledge proofs" }`
-- **Response**: `{ "output": "...", "hash": "...", "metadata": { ... } }`
-
-### `POST /api/v1/proof`
-Anchors a hash to the 0G network.
-- **Body**: `{ "hash": "..." }`
-- **Response**: `{ "txHash": "...", "status": "stored" }`
-
-### `POST /api/v1/verify`
-Verifies content against the 0G network.
-- **Body**: `{ "hash": "...", "metadata": { ... } }`
-- **Response**: `{ "verified": true, "message": "Content valid" }`
+Right now, AI content is a black box. If I show you an article today, you cannot prove it wasn't secretly edited tomorrow. This is dangerous for **Journalism**, **Law**, and **Public Trust**.
 
 ---
-*Built with ❤️ for the 0G Hackathon*
+
+## 🛡️ The Solution: ProofMind
+**ProofMind turns AI output into verifiable evidence.**
+
+Think of it as a **Digital Notary + Audit Trail** for AI.
+*   **Notary (Real World)**: Verifies documents.
+*   **ProofMind (Digital World)**: Verifies AI-generated content.
+
+Once content is generated via ProofMind, it is cryptographically hashed and anchored to the **0G Blockchain**. This makes it:
+1.  **Immutable**: It cannot be secretly changed.
+2.  **Verifiable**: Anyone, anywhere can check its authenticity.
+
+---
+
+## ⚙️ 0G Architecture & Tech Stack
+
+We utilize the **ZeroGravity (0G) Modular AI Chain** to provide our trust layer:
+
+*   **0G Storage**: Used to store the Immutable Proofs (SHA-256 Hashes) of the content.
+*   **0G Chain**: The decentralized ledger that ensures finality and resistance to censorship.
+*   **0G Compute**: Used to verify the integrity of the off-chain AI inference (ensuring the model output wasn't tampered with).
+*   **0G CC MCP**: We integrate the **`@0gfoundation/0g-cc`** library as our Model Context Protocol (MCP) bridge, allowing our AI Service to verify and sign data directly on the 0G network.
+
+### Additional Stack
+*   **Frontend**: React, Tailwind CSS, Vite, Three.js (Hyperspeed)
+*   **Backend**: Node.js, Express
+*   **AI**: OpenAI API (with Robust Mock Safety Layer)
+
+---
+
+## 🚀 Use Cases
+
+### 1️⃣ Journalism & Media 📰
+*   **Problem**: Fake news spreads easily; articles can be edited stealthily.
+*   **Solution**: Agencies can prove *"This article was generated at this time and has not been altered."*
+*   **Impact**: Restores reader trust.
+
+### 2️⃣ Legal & Compliance ⚖️
+*   **Problem**: AI-generated drafts can be disputed in court.
+*   **Solution**: Lawyers can provide a timestamped, immutable record of the original draft.
+*   **Impact**: AI output becomes defensible evidence.
+
+### 3️⃣ Academic Research 🎓
+*   **Problem**: Plagiarism concerns and unclear AI usage.
+*   **Solution**: Researchers can show exactly which parts were AI-assisted and that results weren't cherry-picked later.
+*   **Impact**: Ethical and transparent AI usage.
+
+### 4️⃣ Developers & Platforms 🧑‍💻
+*   **Problem**: Users don't trust "magic" AI boxes.
+*   **Solution**: Embed verification into apps. Offer "Verified AI" badges.
+*   **Impact**: Trust becomes a competitive feature.
+
+---
+
+## 🔮 The Future
+As AI becomes ubiquitous, trust will matter more than intelligence.
+ProofMind positions itself as **"The trust layer for AI-generated content."**
+
+> "In the future, the question won't be **'Is this AI-generated?'**, but **'Can this AI output be verified?'**"
+
+---
+
+### Setup & Run
+1.  `npm install` (root)
+2.  `npm run dev:backend`
+3.  `npm run dev:frontend`
