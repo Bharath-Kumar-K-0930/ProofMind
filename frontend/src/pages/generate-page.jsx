@@ -17,11 +17,11 @@ const GeneratePage = () => {
     };
 
     // Save to localStorage whenever they change
-    React.useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('pm_prompt', prompt);
     }, [prompt]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (result) {
             localStorage.setItem('pm_result', JSON.stringify(result));
         }

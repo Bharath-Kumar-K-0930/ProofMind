@@ -1,0 +1,5 @@
+  console.log
+    [0G] Proof stored: {"txHash":"mock_tx_123","status":"stored"}
+
+      at log (src/services/ogcc-service.js:38:17)
+

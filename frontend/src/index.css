@@ -1,59 +1,122 @@
 @import "tailwindcss";
 
-@theme {
+/* Define variables in :root for maximum compatibility & zero warnings */
+:root {
     --color-primary: #74f0ed;
     --color-secondary: #ea445a;
     --color-bg: #000000;
     --color-panel: #111111;
-
     --font-sans: 'Inter', system-ui, sans-serif;
 }
 
-@layer base {
-    body {
-        @apply bg-bg text-white font-sans antialiased;
-    }
-
-    h1,
-    h2,
-    h3 {
-        @apply font-black uppercase tracking-[-2px] leading-[0.9];
-    }
+/* Base styles using standard CSS to avoid @apply/'Unknown at-rule' warnings */
+body {
+    background-color: var(--color-bg);
+    color: white;
+    font-family: var(--font-sans);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-@layer components {
-    .btn-primary {
-        @apply bg-secondary text-white px-12 py-5 rounded-[40px] font-black uppercase text-base tracking-wider transition-all duration-300;
-        box-shadow: 0 10px 20px rgba(234, 68, 90, 0.3);
-    }
+h1,
+h2,
+h3 {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.9;
+    margin: 0;
+}
 
-    .btn-primary:hover {
-        @apply translate-y-[-3px] scale-105 bg-[#ff4d61];
-        box-shadow: 0 15px 30px rgba(234, 68, 90, 0.5);
-    }
+/* Component styles using standard CSS */
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 1.25rem 3rem;
+    border-radius: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(234, 68, 90, 0.3);
+}
 
-    .btn-primary:active {
-        @apply translate-y-0 scale-95;
-    }
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    background-color: #ff4d61;
+    box-shadow: 0 15px 30px rgba(234, 68, 90, 0.5);
+}
 
-    .card {
-        @apply bg-panel border border-white/10 rounded-[24px] p-12 relative overflow-hidden;
-    }
+.btn-primary:active {
+    transform: translateY(0) scale(0.95);
+}
 
-    .input-field {
-        @apply w-full p-5 bg-[#1a1a1a] border-2 border-transparent rounded-[16px] text-white text-lg font-semibold transition-all duration-300 focus:outline-none focus:border-primary focus:bg-[#222];
-    }
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
 
-    .input-field:focus {
-        box-shadow: 0 0 30px rgba(116, 240, 237, 0.1);
-    }
+.card {
+    background-color: var(--color-panel);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
 
-    .badge {
-        @apply inline-block px-6 py-2 rounded-[40px] text-sm font-black uppercase;
-    }
+.input-field {
+    width: 100%;
+    padding: 1.25rem;
+    background-color: #1a1a1a;
+    border: 2px solid transparent;
+    border-radius: 16px;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: #222;
+    box-shadow: 0 0 30px rgba(116, 240, 237, 0.1);
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border-radius: 40px;
+    font-size: 0.875rem;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .text-outline {
     -webkit-text-stroke: 2px white;
     color: transparent;
+}
+
+/* Utility helpers that were used in index.css */
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.bg-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-secondary {
+    background-color: var(--color-secondary);
 }

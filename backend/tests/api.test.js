@@ -12,7 +12,7 @@ jest.mock('@0gfoundation/0g-cc', () => ({
 }));
 
 jest.mock('../src/services/hash-service', () => ({
-    createHash: jest.fn().mockReturnValue('mock_hash')
+    createHash: jest.fn().mockReturnValue('a'.repeat(64))
 }));
 
 jest.mock('openai', () => {
@@ -65,10 +65,11 @@ describe('ProofMind API API Tests', () => {
     });
 
     test('POST /api/v1/verify should verify content', async () => {
+        const validHash = 'a'.repeat(64);
         const res = await request(app)
             .post('/api/v1/verify')
             .send({
-                hash: 'mock_hash',
+                hash: validHash,
                 metadata: { timestamp: Date.now(), model: 'gpt-mock', output: 'some content' }
             });
 
