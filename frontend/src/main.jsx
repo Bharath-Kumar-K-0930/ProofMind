@@ -35,9 +35,9 @@ const App = () => {
             </nav>
 
             <main>
-                {page === 'home' && <Home onStart={() => setPage('generate')} />}
-                {page === 'generate' && <Generate />}
-                {page === 'verify' && <Verify />}
+                {page === 'home' && <HomePage onStart={() => setPage('generate')} />}
+                {page === 'generate' && <GeneratePage />}
+                {page === 'verify' && <VerifyPage />}
             </main>
         </div>
     );
